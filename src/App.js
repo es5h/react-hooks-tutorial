@@ -1,10 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
 import Info from './Info'
+import {useState} from "react";
 
 const App = () => {
+  const [visible, setVisible] = useState(false);
+
   return (
-      <Info />
+    <div>
+      <button onClick = {() => {setVisible(!visible)}}>
+        {visible ? "hide" : "show"}
+      </button>
+      {visible && <Info />}
+    </div>
   ) ;
 }
 
