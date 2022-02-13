@@ -5,8 +5,9 @@ const Info = () => {
   const [nickName, setNickName] = useState('');
   useEffect(() => {
     console.log("render complete!");
-    console.log({name, nickName})
-  },[name])
+    console.log(name);
+  },[name]);
+
   const onChangeName = e => {
     setName(e.target.value)
   };
