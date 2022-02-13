@@ -1,32 +1,35 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const Info = () => {
-    const [name, setName] = useState('');
-    const [nickName, setNickName] = useState('');
+  const [name, setName] = useState('');
+  const [nickName, setNickName] = useState('');
+  useEffect(() => {
+    console.log("render complete!");
+    console.log({name, nickName})
+  },[name])
+  const onChangeName = e => {
+    setName(e.target.value)
+  };
+  const onChangeNickName = e => {
+    setNickName(e.target.value)
+  };
 
-    const onChangeName = e => {
-        setName(e.target.value)
-    };
-    const onChangeNickName = e => {
-        setNickName(e.target.value)
-    };
-
-    return (
+  return (
+    <div>
+      <div>
+        <input value={name} onChange={onChangeName}/>
+        <input value={nickName} onChange={onChangeNickName}/>
+      </div>
+      <div>
         <div>
-            <div>
-                <input value={name} onChange={onChangeName} />
-                <input value={nickName} onChange={onChangeNickName} />
-            </div>
-            <div>
-                <div>
-                    <b> Name : </b> {name}
-                </div>
-                <div>
-                    <b> NickName : </b> {nickName}
-                </div>
-            </div>
+          <b> Name : </b> {name}
         </div>
-    );
+        <div>
+          <b> NickName : </b> {nickName}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Info;
